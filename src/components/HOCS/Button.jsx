@@ -20,13 +20,14 @@ const Button = ({
                     iconRight,
                     noMargin,
                     children,
-                    fullWidth
+                    fullWidth,
+                    disabled
                 }) => {
     return (
         <div className={classNames('btn-wrapper', {
             'btn__full-width': fullWidth,
         })}>
-            <button onClick={onClick} className={classNames('btn', {
+            <button disabled={disabled} onClick={onClick} className={classNames('btn', {
                 'btn__type-primary': primary,
                 'btn__type-secondary': secondary,
                 'btn__type-outline': outline,
@@ -47,6 +48,7 @@ const Button = ({
                 'btn__no-text': !children,
                 'btn__no-margin': noMargin,
                 'btn__full-width': fullWidth,
+                'btn__disabled': disabled,
             })}>
                 {iconLeft && <div className="btn__icon-left">
                 <span className="material-icons">

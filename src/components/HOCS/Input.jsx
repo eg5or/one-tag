@@ -1,7 +1,9 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const Input = ({outline, large, iconLeft, iconRight, fullWidth, id, label}) => {
+const Input = ({outline, large, iconLeft, iconRight, fullWidth, id, label, name, type, onChange, value}) => {
+
+
     return (
         <div className="input-wrapper">
             <input id={id} className={classNames('input', {
@@ -11,7 +13,13 @@ const Input = ({outline, large, iconLeft, iconRight, fullWidth, id, label}) => {
                 'input__with-icon-left': iconLeft,
                 'input__with-icon-right': iconRight,
                 'input__full-width': fullWidth,
-            })} type="text" placeholder=" " />
+            })} type={!type ? 'text' : type}
+                   name={name}
+                   placeholder=" "
+                   onChange={onChange}
+                   value={value}
+                   autoComplete="off"
+            />
             <label className="input__label" htmlFor={id}>{label}</label>
             {!outline && <div className="input__bb-line-container">
                 <div className="input__bb-line"/>

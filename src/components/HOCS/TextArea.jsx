@@ -1,9 +1,11 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const TextArea = ({name, id, label, rows, onChange, value}) => {
+const TextArea = ({name, id, label, rows, onChange, value, fullWidth}) => {
     return (
-        <div className={classNames('textarea-wrapper')}>
+        <div className={classNames('textarea-wrapper', {
+            'textarea__full-width': fullWidth
+        })}>
             <textarea onChange={onChange} value={value} className={classNames('textarea', {
                 'textarea__rows-1': !rows || rows === '1',
                 'textarea__rows-2': rows === '2',

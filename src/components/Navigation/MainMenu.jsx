@@ -20,9 +20,9 @@ const MainMenu = ({openBurger, onCloseBurgerMenu}) => {
                 <div className="main-menu__icon"><Icon size="sm" data="assignment"/></div>
                 <div className="main-menu__text">Guide</div>
             </NavLink>
-            <NavLink to='/test' >
+            <NavLink to='/login' >
                 <div className="main-menu__icon"><Icon size="sm" data="bug_report"/></div>
-                <div className="main-menu__text">Test</div>
+                <div className="main-menu__text">Login</div>
             </NavLink>
         </nav>
     );
