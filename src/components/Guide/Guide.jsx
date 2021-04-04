@@ -229,7 +229,7 @@ const Guide = () => {
                     </CodeBox>
                 </div>
                 <div className="guide-block">
-                    <h2>Circular Progress</h2>
+                    <h2>Message Box</h2>
                     <div className="guide-block__content">
                         <MessageBox primary>Primary Message Box</MessageBox>
                         <MessageBox secondary>Secondary Message Box</MessageBox>
@@ -238,8 +238,8 @@ const Guide = () => {
                         <MessageBox info>Info Message Box</MessageBox>
                     </div>
                     <CodeBox>
-                        {`<CircularProgress fill="fill" color="color" size="size" type="type"/>`}
-                        <p>fill: none | primary | secondary | danger | warning | info | dark | default</p>
+                        {`<MessageBox type icon="icon_name">Some Text</MessageBox>`}
+                        <p>type: primary | secondary | danger | warning | info | dark | default</p>
                     </CodeBox>
                 </div>
             </div>

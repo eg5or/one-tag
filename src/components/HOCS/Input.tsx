@@ -1,9 +1,35 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const Input = ({outline, large, iconLeft, iconRight, fullWidth, id, label, name, type, onChange, value}) => {
+interface InputProps {
+    outline?: boolean
+    large?: boolean
+    iconLeft?: string
+    iconRight?: string
+    fullWidth?: boolean
+    id: string
+    label: string
+    name: string
+    type?: string
+    value: string
+    onChange: (e: React.ChangeEvent) => void
+    onKeyDown?: React.KeyboardEventHandler
+}
 
-
+const Input: React.FC<InputProps> = ({
+                                         outline,
+                                         large,
+                                         iconLeft,
+                                         iconRight,
+                                         fullWidth,
+                                         id,
+                                         label,
+                                         name,
+                                         type,
+                                         onChange,
+                                         onKeyDown,
+                                         value
+                                     }) => {
     return (
         <div className="input-wrapper">
             <input id={id} className={classNames('input', {
@@ -17,6 +43,7 @@ const Input = ({outline, large, iconLeft, iconRight, fullWidth, id, label, name,
                    name={name}
                    placeholder=" "
                    onChange={onChange}
+                   onKeyDown={onKeyDown}
                    value={value}
                    autoComplete="off"
             />

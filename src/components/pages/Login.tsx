@@ -7,8 +7,21 @@ import Button from '../HOCS/Button';
 import {NavLink} from 'react-router-dom';
 import FlexBox from '../HOCS/FlexBox';
 
-const Login = () => {
-    const minPasswordChars = 10
+const Login: React.FC = () => {
+    // ------------ FUNCTIONS --------------------------------------
+    const onLogin = (): void => {
+        if (formik.errors.email || formik.errors.password) {
+            setErrorShow(true)
+            console.log(formik.errors)
+        } else {
+            console.log(formik.values.email, formik.values.password)
+        }
+    }
+    const onEnter = (e: React.KeyboardEvent<Element>) => {
+        if (e.code === 'Enter') return onLogin()
+    }
+    // ------------ / FUNCTIONS ------------------------------------
+    const minPasswordChars: number = 10
     let validationSchema = yup.object().shape({
         email: yup.string()
             .email('Некорректный e-mail')
@@ -23,6 +36,7 @@ const Login = () => {
             email: '',
             password: ''
         },
+        onSubmit: onLogin,
         validateOnMount: true,
         validationSchema: validationSchema,
     })
@@ -32,17 +46,7 @@ const Login = () => {
     // ------------ / LOCAL STATE ----------------------------------
     // ------------ HOOKS ------------------------------------------
     // ------------ / HOOKS ----------------------------------------
-    // ------------ FUNCTIONS --------------------------------------
-    const onLogin = () => {
-        if (formik.errors.email || formik.errors.password) {
-            setErrorShow(true)
-            console.log(formik.errors)
-        } else {
-            console.log(formik.values.email, formik.values.password)
-        }
-    }
 
-    // ------------ / FUNCTIONS ------------------------------------
 
     return <div className="login-wrapper">
         <div className="container">
@@ -55,6 +59,7 @@ const Login = () => {
                    label="e-mail"
                    value={formik.values.email}
                    onChange={formik.handleChange}
+                   onKeyDown={onEnter}
             />
             {errorShow && formik.errors.email && <MessageBox danger icon="warning" >{formik.errors.email}</MessageBox>}
             <Input large
@@ -65,6 +70,7 @@ const Login = () => {
                    label="пароль"
                    value={formik.values.password}
                    onChange={formik.handleChange}
+                   onKeyDown={onEnter}
             />
             {errorShow && formik.errors.password && <MessageBox danger icon="warning" >{formik.errors.password}</MessageBox>}
             <Button onClick={onLogin} outline fullWidth size="lg" iconLeft="login">Войти</Button>

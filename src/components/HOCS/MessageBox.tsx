@@ -1,7 +1,18 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const MessageBox = ({children, primary, secondary, warning, danger, info, icon}) => {
+interface MessageBoxProps {
+    children: React.ReactNode
+    primary?: boolean
+    secondary?: boolean
+    warning?: boolean
+    danger?: boolean
+    info?: boolean
+    icon?: string
+}
+
+const MessageBox: React.FC<MessageBoxProps> = ({children, primary, secondary, warning, danger, info, icon}) => {
+
     return <div className={classNames('message-box', {
         'message-box__color-primary': primary,
         'message-box__color-secondary': secondary,

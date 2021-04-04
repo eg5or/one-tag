@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import classNames from 'classnames'
 
-const TextArea = ({name, id, label, rows, onChange, value, fullWidth}) => {
+interface TextAreaProps {
+    name: string
+    id: string
+    label: string
+    rows?: '1' | '2' | '3' | '4' | '5' | '6'
+    value: string
+    fullWidth?: boolean
+    onChange: (e: ChangeEvent) => void
+}
+
+const TextArea: React.FC<TextAreaProps> = ({name, id, label, rows, onChange, value, fullWidth}) => {
     return (
         <div className={classNames('textarea-wrapper', {
             'textarea__full-width': fullWidth

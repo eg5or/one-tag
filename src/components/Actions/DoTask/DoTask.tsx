@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DoTask = () => {
+const DoTask: React.FC = () => {
     return <section id="do-task">
         <div className="container">
 

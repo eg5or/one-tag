@@ -2,204 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-// == VARIABLES ==
-// base
-$base: 4px;
+@import './variables';
+@import './mixins';
+@import './common';
 
-// colors
-$primary-color: #B5EE57;
-$secondary-color: #7F9845;
-$default-color: #FADD98;
-$info-color: #345D7B;
-$warning-color: #EA6430;
-$danger-color: #D84E51;
-$dark-color: #383448;
-// adaptive
-$screen-xxs-min: 0px;
-$screen-xs-min: 320px;
-$screen-sm-min: 576px;
-$screen-md-min: 768px;
-$screen-lg-min: 992px;
-$screen-xl-min: 1200px;
-
-$screen-xxs-max: 319px;
-$screen-xs-max: 575px;
-$screen-sm-max: 767px;
-$screen-md-max: 991px;
-$screen-lg-max: 1199px;
-$screen-xl-max: 1399px;
-
-// == MIXINS ==
-
-@mixin default-text {
-  font: {
-    family: Raleway;
-    size: 18px;
-    weight: 400;
-  }
-}
-
-@mixin light-text {
-  font: {
-    family: Raleway;
-    size: 18px;
-    weight: 300;
-  }
-}
-
-@mixin small-text {
-  font: {
-    family: Raleway;
-    size: 14px;
-    weight: 400;
-  }
-}
-
-@mixin large-text {
-  font: {
-    family: Raleway;
-    size: 22px;
-    weight: 300;
-  }
-}
-
-// == / MIXINS ==
-// == COMMON ==
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  @include light-text;
-  color: $default-color;
-
-  margin: 0;
-  padding: 0;
-  background-color: $dark-color;
-  cursor: default;
-}
-
-h1 {
-  font-size: 50px;
-  font-weight: 700;
-  margin: 0 15px 30px;
-}
-
-h2 {
-  font-size: 35px;
-  font-weight: 500;
-  margin: 0 10px 20px;
-}
-
-h3 {
-  font-size: 30px;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin: 0 5px 10px;
-}
-
-h4 {
-  font-size: 20px;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin: 0 5px 10px;
-}
-
-.link {
-  text-decoration: none;
-  color: $secondary-color;
-  border-bottom: 1px dashed $secondary-color;
-  &:hover {
-    cursor: pointer;
-    color: $default-color;
-    border-bottom: 1px solid $default-color;
-  }
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  -webkit-text-fill-color: $dark-color;
-  -webkit-box-shadow: 0 0 0px 1000px $secondary-color inset;
-  //transition: background-color 5000s ease-in-out 0s;
-}
-
-.app-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  width:100%;
-  background-color: $dark-color;
-}
-
-.content-wrapper {
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 80px;
-  position: sticky;
-  top: 0;
-  background: $dark-color;
-  z-index: 9999;
-  box-shadow: 0 0 25px 2px rgba($default-color, 0.2);
-  padding: 10px 30px;
-  &__logo {
-    display: flex;
-    height: 100%;
-    &-text,
-    &-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    &-text {
-      color: $primary-color;
-      font-size: 40px;
-      font-weight: 700;
-      white-space: nowrap;
-      span {
-        color: $warning-color;
-      }
-    }
-  }
-  @media (min-width: $screen-md-min) {
-    &__burger-btn {
-      display: none;
-    }
-  }
-
-  @media (max-width: $screen-md-min) {
-    &__burger-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-
-}
 
 // menu
 
@@ -1416,5 +1222,14 @@ select:-webkit-autofill:focus {
       border: 2px solid $info-color;
       box-shadow: 0 0 10px 0 rgba($info-color, 0.4);
     }
+  }
+}
+
+.main-wrapper-2 {
+  div:not(:first-child) {
+    display: inline-block;
+  }
+  .foo {
+    font-weight: 700;
   }
 }

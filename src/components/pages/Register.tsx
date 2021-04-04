@@ -8,6 +8,19 @@ import * as yup from 'yup';
 import {useFormik} from 'formik';
 
 const Register = () => {
+    // ------------ FUNCTIONS --------------------------------------
+    const onRegister = (): void => {
+        if (formik.errors.login || formik.errors.email || formik.errors.password || formik.errors.passwordCheck) {
+            setErrorShow(true)
+            console.log(formik.errors)
+        } else {
+            console.log(formik.values.login, formik.values.email, formik.values.password)
+        }
+    }
+    const onEnter = (e: React.KeyboardEvent<Element>) => {
+        if (e.code === 'Enter') return onRegister()
+    }
+    // ------------ / FUNCTIONS ------------------------------------
     const minPasswordChars = 10
     let validationSchema = yup.object().shape({
         login: yup.string()
@@ -30,6 +43,7 @@ const Register = () => {
             password: '',
             passwordCheck: ''
         },
+        onSubmit: onRegister,
         validateOnMount: true,
         validationSchema: validationSchema,
     })
@@ -39,15 +53,6 @@ const Register = () => {
     // ------------ / LOCAL STATE ----------------------------------
     // ------------ HOOKS ------------------------------------------
     // ------------ / HOOKS ----------------------------------------
-    // ------------ FUNCTIONS --------------------------------------
-    const onRegister = () => {
-        if (formik.errors.login || formik.errors.email || formik.errors.password || formik.errors.passwordCheck) {
-            setErrorShow(true)
-            console.log(formik.errors)
-        } else {
-            console.log(formik.values.login, formik.values.email, formik.values.password)
-        }
-    }
     return <div className="register-wrapper">
         <div className="container">
             <h2>Регистрация</h2>
@@ -58,6 +63,7 @@ const Register = () => {
                    label="логин"
                    value={formik.values.login}
                    onChange={formik.handleChange}
+                   onKeyDown={onEnter}
             />
             {errorShow && formik.errors.login && <MessageBox danger icon="warning" >{formik.errors.login}</MessageBox>}
             <Input large
@@ -67,6 +73,7 @@ const Register = () => {
                    label="e-mail"
                    value={formik.values.email}
                    onChange={formik.handleChange}
+                   onKeyDown={onEnter}
             />
             {errorShow && formik.errors.email && <MessageBox danger icon="warning" >{formik.errors.email}</MessageBox>}
             <Input large
@@ -77,6 +84,7 @@ const Register = () => {
                    label="пароль"
                    value={formik.values.password}
                    onChange={formik.handleChange}
+                   onKeyDown={onEnter}
             />
             {errorShow && formik.errors.password && <MessageBox danger icon="warning" >{formik.errors.password}</MessageBox>}
             <Input large
@@ -87,6 +95,7 @@ const Register = () => {
                    label="пароль еще раз"
                    value={formik.values.passwordCheck}
                    onChange={formik.handleChange}
+                   onKeyDown={onEnter}
             />
             {errorShow && formik.errors.passwordCheck && <MessageBox danger icon="warning" >{formik.errors.passwordCheck}</MessageBox>}
             <Button onClick={onRegister} outline fullWidth size="lg" iconLeft="assignment_turned_in">Зарегистрироваться</Button>

@@ -2,16 +2,15 @@ import React from 'react';
 import Icon from '../HOCS/Icon';
 import MainMenu from '../Navigation/MainMenu';
 import Button from '../HOCS/Button';
-import FlexBox from '../HOCS/FlexBox';
 
-const Header = () => {
+const Header: React.FC = () => {
 
     const [openBurger, setOpenBurger] = React.useState(false)
 
-    const onOpenBurgerMenu = () => {
+    const onOpenBurgerMenu = (): void => {
         setOpenBurger(true)
     }
-    const onCloseBurgerMenu = () => {
+    const onCloseBurgerMenu = (): void => {
         setOpenBurger(false)
     }
     return (

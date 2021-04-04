@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const CodeBox = ({children}) => {
-    console.log(children)
+interface CodeBoxProps {
+    children: React.ReactNode
+}
+
+const CodeBox: React.FC<CodeBoxProps> = ({children}) => {
     return (
         <code className={classNames('code-box')}>
             {children}

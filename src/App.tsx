@@ -5,11 +5,10 @@ import Header from './components/Header/Header';
 import Main from './components/pages/Main';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
+import Information from './components/pages/Information';
 
 
-function App() {
-
-
+const App: React.FC = () => {
     return (
         <div className="app-wrapper">
             <Header/>
@@ -17,6 +16,7 @@ function App() {
                 <Route path='/guide' component={Guide}/>
                 <Route path='/login' component={Login}/>
                 <Route path='/register' component={Register}/>
+                <Route path='/information' component={Information}/>
                 <Route path='/' exact component={Main}/>
             </div>
         </div>

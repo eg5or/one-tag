@@ -1,7 +1,30 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const Button = ({
+interface ButtonProps {
+    children?: React.ReactNode
+    onClick: () => void
+    primary?: boolean
+    secondary?: boolean
+    outline?: boolean
+    danger?: boolean
+    warning?: boolean
+    info?: boolean
+    icon?: boolean
+    uppercase?: boolean
+    lowercase?: boolean
+    bolder?: boolean
+    bold?: boolean
+    extraBold?: boolean
+    size?: string
+    iconLeft?: string
+    iconRight?: string
+    noMargin?: boolean
+    fullWidth?: boolean
+    disabled?: boolean
+}
+
+const Button: React.FC<ButtonProps> = ({
                     onClick,
                     primary,
                     secondary,

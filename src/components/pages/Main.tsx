@@ -4,7 +4,8 @@ import RateTask from '../Actions/RateTask/RateTask';
 import DoTask from '../Actions/DoTask/DoTask';
 import RateDoneTask from '../Actions/RateDoneTask/RateDoneTask';
 
-const Main = () => {
+const Main: React.FC = () => {
+
     return <div className="main-wrapper">
         <AddTask />
         <RateTask />

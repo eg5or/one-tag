@@ -6,8 +6,13 @@ import * as yup from 'yup';
 import MessageBox from '../../HOCS/MessageBox';
 import CircularProgress from '../../HOCS/CircularProgress';
 
-const AddTask = () => {
-    const textMaxChars = 50
+const AddTask: React.FC = () => {
+    // ------------ FUNCTIONS --------------------------------------
+    const onAddTask = ():void => {
+        console.log(formik.values.newTask)
+    }
+    // ------------ / FUNCTIONS ------------------------------------
+    const textMaxChars: number = 50
     let validationSchema = yup.object().shape({
         newTask: yup.string().required('Обязательное поле').max(textMaxChars, `Максимальное количество символов - ${textMaxChars}`),
     });
@@ -16,14 +21,15 @@ const AddTask = () => {
         initialValues: {
             newTask: ''
         },
+        onSubmit: onAddTask,
         validateOnMount: true,
         validationSchema: validationSchema,
     })
     // ------------ / FORMIK ---------------------------------------
     // ------------ LOCAL STATE ------------------------------------
-    const [showAddContactBtn, setShowAddContactBtn] = React.useState(true)
-    const [errorShow, setErrorShow] = React.useState(false)
     // ------------ / LOCAL STATE ----------------------------------
+
+
     return <section id="add-task">
         <div className="container">
             <div className="main__title">
@@ -42,7 +48,7 @@ const AddTask = () => {
                     <CircularProgress color="secondary" value={formik.values.newTask.length} maxValue={textMaxChars} />
                 </div>
                 {formik.errors.newTask && <MessageBox icon="warning" danger>{formik.errors.newTask}</MessageBox>}
-                <Button disabled={formik.errors.newTask} iconLeft="save" size="lg" primary fullWidth>Поехали</Button>
+                <Button onClick={onAddTask} disabled={Boolean(formik.errors.newTask)} iconLeft="save" size="lg" primary fullWidth>Поехали</Button>
             </div>
         </div>
     </section>

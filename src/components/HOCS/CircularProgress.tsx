@@ -1,7 +1,16 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const CircularProgress = ({size, color, fill, type, value = 0, maxValue = 100}) => {
+interface CircularProgressProps {
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+    color?: 'primary' | 'secondary' | 'danger' | 'warning' | 'info'
+    fill?: 'primary' | 'secondary' | 'danger' | 'warning' | 'info' | 'dark'
+    type?: 'percent'
+    value: number
+    maxValue?: number
+}
+
+const CircularProgress: React.FC<CircularProgressProps> = ({size, color, fill, type, value = 0, maxValue = 100}) => {
     let sizeSvg
     switch (size) {
         case 'xs':
@@ -34,7 +43,12 @@ const CircularProgress = ({size, color, fill, type, value = 0, maxValue = 100}) 
     const radius = (sizeSvg / 2) - (strokeWidthFill / 2)
     const maxAngle = 359.999
 
-    const drawCircle = (cx, cy, radius, deg) => { // 50, 50, 40, -91
+    type CoordsObject = {
+        x: number
+        y: number
+    }
+
+    const drawCircle = (cx: number, cy: number, radius: number, deg: number):CoordsObject => { // 50, 50, 40, -91
         const rad = (deg - 270) * Math.PI / 180
         return {
             x: cx - (radius * Math.cos(rad)), // 50 + (40 * -359) => 40
@@ -42,7 +56,7 @@ const CircularProgress = ({size, color, fill, type, value = 0, maxValue = 100}) 
         }
     }
 
-    const drawPointer = (x, y, radius, angleStart, angleEnd) => { // 50, 50, 40, 0, 359
+    const drawPointer = (x: number, y: number, radius: number, angleStart: number, angleEnd: number)  => { // 50, 50, 40, 0, 359
         const start = drawCircle(x, y, radius, -angleEnd) // 50, 50, 40, -359 =>
         const end = drawCircle(x, y, radius, angleStart) // 50, 50, 40, 0 =>
         const largeArc = angleEnd - angleStart <= 180 ? 0 : 1
@@ -74,7 +88,7 @@ const CircularProgress = ({size, color, fill, type, value = 0, maxValue = 100}) 
                 'circular-progress__color-primary': fill === 'primary',
                 'circular-progress__color-secondary': fill === 'secondary',
                 'circular-progress__color-warning': fill === 'warning',
-                'circular-progress__color-default': !fill || fill === 'default',
+                'circular-progress__color-default': !fill,
                 'circular-progress__color-danger': fill === 'danger',
                 'circular-progress__color-info': fill === 'info',
                 'circular-progress__color-dark': fill === 'dark',

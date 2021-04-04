@@ -1,0 +1,26 @@
+// == VARIABLES ==
+// base
+$base: 4px;
+
+// colors
+$primary-color: #B5EE57;
+$secondary-color: #7F9845;
+$default-color: #FADD98;
+$info-color: #345D7B;
+$warning-color: #EA6430;
+$danger-color: #D84E51;
+$dark-color: #383448;
+// adaptive
+$screen-xxs-min: 0px;
+$screen-xs-min: 320px;
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+$screen-xxs-max: 319px;
+$screen-xs-max: 575px;
+$screen-sm-max: 767px;
+$screen-md-max: 991px;
+$screen-lg-max: 1199px;
+$screen-xl-max: 1399px;

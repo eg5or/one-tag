@@ -3,7 +3,14 @@ import ButtonGroup from '../../HOCS/ButtonGroup';
 import Button from '../../HOCS/Button';
 import Card from '../../HOCS/Card';
 
-const RateTask = () => {
+const RateTask: React.FC = () => {
+    const onRateUp = ():void => {
+
+    }
+    const onRateDown = ():void => {
+
+    }
+
     return <section id="rate-task">
         <div className="container">
             <div className="main__title">
@@ -14,8 +21,8 @@ const RateTask = () => {
 
                 </Card>
                 <ButtonGroup fullWidth>
-                    <Button iconLeft="thumb_down_alt" size="lg" danger fullWidth />
-                    <Button iconRight="thumb_up_alt" size="lg" secondary fullWidth />
+                    <Button onClick={onRateDown} iconLeft="thumb_down_alt" size="lg" danger fullWidth />
+                    <Button onClick={onRateUp} iconRight="thumb_up_alt" size="lg" secondary fullWidth />
                 </ButtonGroup>
 
             </div>

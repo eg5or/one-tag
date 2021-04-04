@@ -1,0 +1,35 @@
+// == MIXINS ==
+
+@mixin default-text {
+  font: {
+    family: Raleway;
+    size: 18px;
+    weight: 400;
+  }
+}
+
+@mixin light-text {
+  font: {
+    family: Raleway;
+    size: 18px;
+    weight: 300;
+  }
+}
+
+@mixin small-text {
+  font: {
+    family: Raleway;
+    size: 14px;
+    weight: 400;
+  }
+}
+
+@mixin large-text {
+  font: {
+    family: Raleway;
+    size: 22px;
+    weight: 300;
+  }
+}
+
+// == / MIXINS ==

@@ -3,9 +3,14 @@ import {NavLink} from 'react-router-dom';
 import Icon from '../HOCS/Icon';
 import Button from '../HOCS/Button';
 
-const MainMenu = ({openBurger, onCloseBurgerMenu}) => {
+interface MainMenuProps {
+    openBurger: boolean
+    onCloseBurgerMenu: () => void
+}
+
+const MainMenu: React.FC<MainMenuProps> = ({openBurger, onCloseBurgerMenu}) => {
     return (
-        <nav className="main-menu" style={{right: openBurger && 0}}>
+        <nav className="main-menu" style={{right: openBurger ? 0 : '-400px'}}>
             <div className="main-menu__header">
                 <div className="main-menu__header-text">Меню</div>
                 <div className="main-menu__header-close">
@@ -23,6 +28,10 @@ const MainMenu = ({openBurger, onCloseBurgerMenu}) => {
             <NavLink to='/login' >
                 <div className="main-menu__icon"><Icon size="sm" data="bug_report"/></div>
                 <div className="main-menu__text">Login</div>
+            </NavLink>
+            <NavLink to='/information' >
+                <div className="main-menu__icon"><Icon size="sm" data="info"/></div>
+                <div className="main-menu__text">Information</div>
             </NavLink>
         </nav>
     );
