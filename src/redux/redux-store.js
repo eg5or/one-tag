@@ -1,9 +1,11 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import thunkMiddleware from 'redux-thunk'
 import tagsReducer from "./tagsReducer";
+import taskReducer from './taskReducer';
 
 let reducers = combineReducers( {
-    tags: tagsReducer
+    tags: tagsReducer,
+    tasks: taskReducer
 })
 
 const composeEnchancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
